@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-              android:id="@+id/root_view"
+    android:id="@+id/root_view"
               xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <TextView android:id="@+id/tv1" android:background="@color/colorPrimary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="11111"/>
-    <TextView android:id="@+id/tv2" android:background="@color/colorPrimaryDark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22222"/>
+    <!--<TextView android:id="@+id/tv1"
+              android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈（已阅读）"
+              android:maxEms="30"
+              android:maxLines="2"
+              android:ellipsize="end"
+              android:background="@color/colorPrimary"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>-->
+    <com.example.admin.lfutilapp.EllipsizingTextView
+        android:id="@+id/elli"
+        android:layout_width="wrap_content"
+        android:text="啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊a"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
