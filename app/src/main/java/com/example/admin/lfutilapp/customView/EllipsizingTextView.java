@@ -1,4 +1,4 @@
-package com.example.admin.lfutilapp;
+package com.example.admin.lfutilapp.customView;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,6 +8,7 @@ import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,8 @@ public class EllipsizingTextView extends AppCompatTextView {
     private int mMaxLines = -1;
     private float lineSpacingMultiplier = 1.0f;
     private float lineAdditionalVerticalPadding = 0.0f;
+    private float mMarginLeft = 0.0f;
+    private float mMarginRight = 0.1f;
 
     public EllipsizingTextView(Context context) {
         super(context);
@@ -38,17 +41,29 @@ public class EllipsizingTextView extends AppCompatTextView {
     public EllipsizingTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         // 开始没加这两行的时候，一直不对，maxlinex在textChange里面会被改变为-1
-        TypedArray a = context.obtainStyledAttributes(attrs, new int[] { android.R.attr.maxLines });
+        TypedArray a = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.maxLines});
         setMaxLines(a.getInt(0, 2));
         a.recycle();
+        TypedArray marginLeft = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.layout_marginLeft});
+        TypedArray marginRight = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.layout_marginRight});
+        mMarginLeft = marginLeft.getDimension(0, -1);
+        mMarginRight = marginRight.getDimension(0, -1);
+        Log.v("TAG", "marginLeft : " + mMarginLeft);
+        Log.v("TAG", "marginRight : " + mMarginRight);
     }
 
     public EllipsizingTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         // 开始没加这两行的时候，一直不对，maxlinex在textChange里面会被改变为-1
-        TypedArray a = context.obtainStyledAttributes(attrs, new int[] { android.R.attr.maxLines });
+        TypedArray a = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.maxLines});
         setMaxLines(a.getInt(0, 2));
         a.recycle();
+        TypedArray marginLeft = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.layout_marginLeft});
+        TypedArray marginRight = context.obtainStyledAttributes(attrs, new int[]{android.R.attr.layout_marginRight});
+        mMarginLeft = marginLeft.getDimension(0, -1);
+        mMarginRight = marginRight.getDimension(0, -1);
+        Log.v("TAG", "marginLeft : " + mMarginLeft);
+        Log.v("TAG", "marginRight : " + mMarginRight);
     }
 
     public void addEllipsizeListener(EllipsizeListener listener) {
@@ -66,7 +81,7 @@ public class EllipsizingTextView extends AppCompatTextView {
         return isEllipsized;
     }
 
-    public void setEndText(String endText){
+    public void setEndText(String endText) {
         this.END_TEXT = endText;
         FULL_ELLIPSIS = ELLIPSIS + END_TEXT;
         isStale = true;
@@ -83,8 +98,22 @@ public class EllipsizingTextView extends AppCompatTextView {
         return mMaxLines;
     }
 
-    public int getTextLines(){
+    public int getTextLines() {
         return createWorkingLayout(fullText).getLineCount();
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        if (widthMode != MeasureSpec.EXACTLY) {
+            if (mMarginLeft >= 0.0f && mMarginRight >= 0.0f){
+                int displayWidth = getResources().getDisplayMetrics().widthPixels;
+                int exceptWidth = displayWidth - (int)mMarginLeft - (int)mMarginRight;
+                Log.v("TAG","onMeasure exceptWidth ：" + exceptWidth);
+                widthMeasureSpec = MeasureSpec.makeMeasureSpec(exceptWidth, MeasureSpec.EXACTLY);
+            }
+        }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     @Override
@@ -112,13 +141,15 @@ public class EllipsizingTextView extends AppCompatTextView {
         super.onDraw(canvas);
     }
 
-    private void resetText(){
+    private void resetText() {
         int maxLines = getMaxLine();
         String workingText = fullText;
         String measureLengthText = fullText + END_TEXT;
         boolean ellipsized = false;
+        Log.v("TAG", "maxLines : " + maxLines);
         if (maxLines != -1) {
             Layout measureLayout = createWorkingLayout(measureLengthText);
+            Log.v("TAG", "measure lines : " + measureLayout.getLineCount());
             if (measureLayout.getLineCount() > maxLines) {
                 //需要显示...
                 Layout tempLayout = createWorkingLayout(fullText);
@@ -130,7 +161,7 @@ public class EllipsizingTextView extends AppCompatTextView {
                 }
                 workingText = workingText + FULL_ELLIPSIS;
                 ellipsized = true;
-            }else {
+            } else {
                 //不需要显示...
                 workingText = workingText + END_TEXT;
                 ellipsized = false;

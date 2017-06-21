@@ -13,10 +13,10 @@
               android:background="@color/colorPrimary"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"/>-->
-    <com.example.admin.lfutilapp.EllipsizingTextView
+    <com.example.admin.lfutilapp.customView.EllipsizingTextView
         android:id="@+id/elli"
         android:layout_width="wrap_content"
-        android:text="啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊a"
+        android:text="啊"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>
