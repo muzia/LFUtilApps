@@ -6,7 +6,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.admin.lfutilapp.customView.EllipsizingTextView;
+import com.example.admin.lfutilapp.custom_textView.EllipsizingTextView;
 
 import java.text.DecimalFormat;
 

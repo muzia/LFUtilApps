@@ -1,7 +1,7 @@
-package com.example.admin.lfutilapp.builderTest.invoke;
+package com.example.admin.lfutilapp.builder_pattern.invoke;
 
-import com.example.admin.lfutilapp.builderTest.entity.HotDryNoodles;
-import com.example.admin.lfutilapp.builderTest.entity.HotDryNoodlesWithBuilder;
+import com.example.admin.lfutilapp.builder_pattern.entity.HotDryNoodles;
+import com.example.admin.lfutilapp.builder_pattern.entity.HotDryNoodlesWithBuilder;
 
 /**
  * Created by admin on 2017/6/21.

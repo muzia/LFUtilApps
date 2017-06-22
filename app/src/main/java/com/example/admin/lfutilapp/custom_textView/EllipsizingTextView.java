@@ -1,4 +1,4 @@
-package com.example.admin.lfutilapp.customView;
+package com.example.admin.lfutilapp.custom_textView;
 
 import android.content.Context;
 import android.content.res.TypedArray;

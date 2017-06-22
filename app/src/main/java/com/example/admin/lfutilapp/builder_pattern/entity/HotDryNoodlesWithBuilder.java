@@ -1,4 +1,4 @@
-package com.example.admin.lfutilapp.builderTest.entity;
+package com.example.admin.lfutilapp.builder_pattern.entity;
 
 /**
  * Created by admin on 2017/6/21.

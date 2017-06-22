@@ -13,7 +13,7 @@
               android:background="@color/colorPrimary"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"/>-->
-    <com.example.admin.lfutilapp.customView.EllipsizingTextView
+    <com.example.admin.lfutilapp.custom_textView.EllipsizingTextView
         android:id="@+id/elli"
         android:layout_width="wrap_content"
         android:text="啊"
