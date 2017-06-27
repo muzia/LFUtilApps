@@ -1,10 +1,14 @@
 package com.example.admin.lfutilapp.builder_pattern.entity;
 
 /**
- * Created by admin on 2017/6/21.
+ * Created by lff on 2017/6/21.
  */
 
 public class HotDryNoodlesWithBuilder {
+    /**
+     * Buidler模式, 是一种创建型的设计模式.
+      通常用来将一个复杂的对象的构造过程分离, 让使用者可以根据需要选择创建过程.
+     */
     private boolean addShallot;
     private boolean addParsley;
     private boolean addChili;
@@ -38,6 +42,10 @@ public class HotDryNoodlesWithBuilder {
 
         return builder.toString();
     }
+
+    /**
+     *  Builder常常作为实际产品的静态内部类来实现(提高内聚性).
+     */
     public static class Builder {
 
         private boolean addShallot;

@@ -1,7 +1,7 @@
 package com.example.admin.lfutilapp.builder_pattern.entity;
 
 /**
- * Created by admin on 2017/6/21.
+ * Created by lff on 2017/6/21.
  */
 
 public class HotDryNoodles {
