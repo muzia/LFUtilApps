@@ -1,5 +1,7 @@
 package com.example.admin.lfutilapp.kotlin_demo
 
+import org.jetbrains.annotations.NotNull
+
 /**
  * Created by admin on 2017/6/22.
  */
@@ -33,6 +35,7 @@ fun main(args:Array<String>){
     for (i in 1..5 step 3) println(i) // 输出 1  4
     //step和downTo混合使用
     for (i in 5 downTo 1 step 3) println(i) //输出5  2
+    var test: String?= null
 }
 //表达式可以作为函数体
 fun sum(a:Int,b:Int):Int=a+b
