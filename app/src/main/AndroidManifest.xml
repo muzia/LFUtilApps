@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".kotlin_demo.KotlinActivity">
+        </activity>
+        <activity android:name=".kotlin_demo.KotlinTestActivity">
+        </activity>
     </application>
 
 </manifest>
