@@ -1,7 +1,5 @@
 package com.example.admin.lfutilapp.kotlin_demo
 
-import org.jetbrains.annotations.NotNull
-
 /**
  * Created by admin on 2017/6/22.
  */
@@ -11,7 +9,7 @@ var str1=""
 val iArray: IntArray = intArrayOf(1, 2, 3)
 val sArray: Array<String> = Array<String>(3, { i -> i.toString() })
 val anyArray: Array<Any> = arrayOf(1, "2", 3.0, 4.1f) // 可将类型进行混排放入同一个数组中
-val lArray: LongArray = longArrayOf(1L, 2L, 3L)
+var lArray: LongArray = longArrayOf(1L, 2L, 3L)
 fun main(args:Array<String>){
     str="Hello world!"
     println(str)
@@ -49,6 +47,7 @@ fun forloop(array:Array<String>){
     for(str in array){
         print(str)
     }
+    array.filter { it.startsWith("A") }
     array.forEach { print(it) }
     for (i in array.indices){
         print(array[i])

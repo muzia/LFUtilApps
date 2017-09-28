@@ -1,4 +1,4 @@
-package com.example.admin.lfutilapp.instance_pattern;
+package com.example.admin.lfutilapp.pattern.instance_pattern;
 
 /**
  * Created by admin on 2017/7/7.
